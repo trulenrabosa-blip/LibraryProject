@@ -1,0 +1,16 @@
+/* ============================================================================
+   TEACHER_REQUESTS.CSS — styles specific to teacher_requests.html
+   ============================================================================ */
+
+.req-status {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+}
+.req-status.pending { background: #fbf3e3; color: var(--brass); }
+.req-status.approved { background: var(--success-bg); color: var(--success); }
+.req-status.rejected { background: var(--stamp-bg); color: var(--stamp); }
+
+.req-note { font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.2em; }

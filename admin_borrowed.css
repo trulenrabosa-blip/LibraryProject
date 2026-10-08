@@ -1,0 +1,28 @@
+/* ============================================================================
+   ADMIN_BORROWED.CSS — styles specific to admin_borrowed.html
+   ============================================================================ */
+
+.toolbar { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 1.25rem; }
+.toolbar input[type="text"] {
+  flex: 1; max-width: 340px; padding: 0.55em 0.75em; border: 1px solid var(--line);
+  border-radius: var(--radius); font-size: 0.88rem;
+}
+
+.data-table-wrap { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+.data-table th {
+  text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--ink-soft); padding: 0.7em 0.8em; border-bottom: 1px solid var(--line); white-space: nowrap;
+}
+.data-table td { padding: 0.7em 0.8em; border-bottom: 1px solid var(--line); }
+.data-table tr:last-child td { border-bottom: none; }
+
+.role-tag { font-size: 0.7rem; font-family: var(--font-mono); color: var(--ink-soft); }
+
+.due-badge {
+  display: inline-block; font-family: var(--font-mono); font-size: 0.72rem;
+  padding: 0.15em 0.5em; border-radius: 4px;
+}
+.due-badge.ok { background: var(--success-bg); color: var(--success); }
+.due-badge.soon { background: #fbf3e3; color: var(--brass); }
+.due-badge.late { background: var(--stamp-bg); color: var(--stamp); }

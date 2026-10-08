@@ -1,0 +1,33 @@
+/* ============================================================================
+   ADMIN_ACTIVITY_LOGS.CSS — styles specific to admin_activity_logs.html
+   ============================================================================ */
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 1.25rem; }
+.toolbar input[type="text"] {
+  flex: 1; min-width: 200px; padding: 0.55em 0.75em; border: 1px solid var(--line);
+  border-radius: var(--radius); font-size: 0.88rem;
+}
+.toolbar select { padding: 0.55em 0.75em; border: 1px solid var(--line); border-radius: var(--radius); font-size: 0.88rem; }
+
+.data-table-wrap { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+.data-table th {
+  text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--ink-soft); padding: 0.65em 0.8em; border-bottom: 1px solid var(--line); white-space: nowrap;
+}
+.data-table td { padding: 0.65em 0.8em; border-bottom: 1px solid var(--line); }
+.data-table tr:last-child td { border-bottom: none; }
+
+.log-action {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.15em 0.55em;
+  border-radius: 4px;
+  background: #fbf3e3;
+  color: var(--brass);
+  white-space: nowrap;
+}
+
+.log-time { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); white-space: nowrap; }
+.role-tag { font-size: 0.7rem; font-family: var(--font-mono); color: var(--ink-soft); }

@@ -1,0 +1,234 @@
+/* ============================================================================
+   ADMIN_DASHBOARD.CSS — sidebar shell, dashboard cards, chart panels
+   Used by admin_dashboard.html (and reused by the other admin_*.html pages
+   built in later phases — the sidebar/topbar/card system is the same
+   across all of them).
+   ============================================================================ */
+
+.admin-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Sidebar */
+/* ---------------------------------------------------------------------- */
+.admin-sidebar {
+  background: var(--ink);
+  color: #eef2ee;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.admin-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-sidebar-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: var(--brass);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.admin-sidebar-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.admin-sidebar-sub {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.admin-nav {
+  flex: 1;
+  padding: 0.75rem 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.admin-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  padding: 0.55em 0.75em;
+  border-radius: var(--radius);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.87rem;
+  text-decoration: none;
+}
+
+.admin-nav a:hover { background: rgba(255, 255, 255, 0.06); color: #fff; }
+
+.admin-nav a.active {
+  background: var(--shelf);
+  color: #fff;
+  font-weight: 600;
+}
+
+.admin-nav-icon {
+  width: 16px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.admin-nav-divider {
+  margin: 0.6rem 0.75rem 0.4rem;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.admin-sidebar-footer {
+  padding: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-sidebar-footer button {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Content area */
+/* ---------------------------------------------------------------------- */
+.admin-content { min-width: 0; }
+
+.admin-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.75rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.admin-topbar-title { font-family: var(--font-display); font-size: 1.1rem; }
+
+.admin-main { padding: 1.75rem; max-width: 1400px; }
+
+/* ---------------------------------------------------------------------- */
+/* Stat cards */
+/* ---------------------------------------------------------------------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.2rem;
+}
+
+.stat-card.stat-card-link {
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.05s ease;
+}
+.stat-card.stat-card-link:hover { border-color: var(--brass); }
+.stat-card.stat-card-link:active { transform: translateY(1px); }
+
+.stat-card-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  margin-bottom: 0.5em;
+}
+
+.stat-card-value {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.stat-card-value.stat-warn { color: var(--stamp); }
+
+.stat-card-sub {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-top: 0.4em;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Chart panels */
+/* ---------------------------------------------------------------------- */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.25rem;
+}
+
+.chart-panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 1.1rem;
+}
+
+.chart-panel h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.9rem;
+}
+
+.chart-panel-wrap {
+  position: relative;
+  height: 220px;
+}
+
+.chart-panel.chart-wide { grid-column: span 2; }
+
+@media (max-width: 900px) {
+  .admin-shell { grid-template-columns: 1fr; }
+  .admin-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    z-index: 40;
+  }
+  .admin-sidebar.open { transform: translateX(0); }
+  .chart-panel.chart-wide { grid-column: span 1; }
+
+  /* The toggle button is hidden by default (inline style in admin_layout.js)
+     because on desktop the sidebar is always visible and the button would
+     be pointless clutter. Below 900px the sidebar hides itself off-screen
+     instead, so the button needs to actually appear here — without this
+     rule there is no way to reopen the sidebar on a narrow screen at all. */
+  #sidebar-toggle { display: inline-flex !important; }
+}

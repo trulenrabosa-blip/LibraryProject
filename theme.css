@@ -1,0 +1,192 @@
+/* ============================================================================
+   THEME.CSS — shared design tokens & base primitives
+   This is the one file every page loads first. It holds only what's
+   genuinely global: color/type variables, resets, and small reusable
+   pieces (buttons, form fields, alerts, spinner). Anything specific to a
+   single page's look lives in that page's own CSS file, not here.
+   ============================================================================ */
+
+:root {
+  --ink: #1e2a22;
+  --ink-soft: #5b6b60;
+  --shelf: #33493a;
+  --shelf-dark: #22301f;
+  --brass: #a97c34;
+  --brass-light: #c99a4f;
+  --parchment: #f6f1e4;
+  --card: #fffdf7;
+  --line: #ded4bd;
+  --stamp: #8b3a3a;
+  --stamp-bg: #f6e6e2;
+  --success: #3d6b4c;
+  --success-bg: #e6efe6;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+
+  --radius: 6px;
+  --shadow-card: 0 1px 2px rgba(30, 42, 34, 0.06), 0 8px 24px rgba(30, 42, 34, 0.08);
+  --max-width: 1200px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--parchment);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1em; }
+a { color: var(--shelf); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 2px;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.7em 1.3em;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-primary { background: var(--shelf); color: #fff; }
+.btn-primary:hover { background: var(--shelf-dark); }
+.btn-primary:disabled { background: #9aa89f; cursor: not-allowed; }
+
+.btn-secondary { background: transparent; color: var(--shelf); border-color: var(--shelf); }
+.btn-secondary:hover { background: rgba(51, 73, 58, 0.06); }
+
+.btn-block { width: 100%; }
+
+/* Form fields */
+.field { margin-bottom: 1.1em; text-align: left; }
+
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4em;
+}
+
+.field input, .field select {
+  width: 100%;
+  padding: 0.7em 0.8em;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--ink);
+}
+.field input:focus, .field select:focus { border-color: var(--brass); }
+
+.field-hint { font-size: 0.8rem; color: var(--ink-soft); margin-top: 0.35em; }
+.field-error { font-size: 0.8rem; color: var(--stamp); margin-top: 0.35em; }
+
+fieldset { border: none; padding: 0; margin: 0 0 1.1em; }
+
+.radio-row { display: flex; gap: 0.75em; }
+.radio-card {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.7em 0.8em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.9rem;
+}
+.radio-card input { margin: 0; }
+.radio-card:has(input:checked) { border-color: var(--brass); background: #fbf3e3; }
+
+/* Alerts / toasts */
+.alert {
+  border-radius: var(--radius);
+  padding: 0.8em 1em;
+  font-size: 0.9rem;
+  margin-bottom: 1.1em;
+  border: 1px solid transparent;
+}
+.alert-error { background: var(--stamp-bg); color: var(--stamp); border-color: #e2c3bc; }
+.alert-success { background: var(--success-bg); color: var(--success); border-color: #c3dcc9; }
+
+#toast-region {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.toast {
+  min-width: 260px;
+  max-width: 340px;
+  background: var(--ink);
+  color: #fff;
+  padding: 0.8em 1em;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  font-size: 0.88rem;
+  animation: toast-in 0.18s ease-out;
+}
+.toast.toast-error { background: var(--stamp); }
+.toast.toast-success { background: var(--success); }
+@keyframes toast-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Loading / empty states */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+.spinner-dark { border-color: rgba(30, 42, 34, 0.2); border-top-color: var(--shelf); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.empty-state { text-align: center; padding: 3rem 1rem; color: var(--ink-soft); }
+
+.pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  background: #fbf3e3;
+  color: var(--brass);
+  border: 1px solid #ecd6ac;
+}

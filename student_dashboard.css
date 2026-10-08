@@ -1,0 +1,151 @@
+/* ============================================================================
+   STUDENT_DASHBOARD.CSS — styles specific to student_dashboard.html
+   Signature: a horizontal "reader's card" topbar instead of the admin's
+   dark control-panel sidebar — students browse and borrow, they don't
+   administer, so the shell should feel lighter and more welcoming.
+   ============================================================================ */
+
+.student-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.75rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+
+.student-brand { display: flex; align-items: center; gap: 0.6em; }
+
+.student-brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--shelf);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.student-brand-name { font-family: var(--font-display); font-weight: 600; font-size: 1.02rem; }
+
+.student-nav {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0 1.75rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  overflow-x: auto;
+}
+
+.student-nav a {
+  flex-shrink: 0;
+  padding: 0.75em 0.85em;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.student-nav a:hover { color: var(--ink); text-decoration: none; }
+
+.student-nav a.active {
+  color: var(--shelf);
+  border-bottom-color: var(--brass);
+  font-weight: 600;
+}
+
+.nav-badge {
+  display: inline-block;
+  margin-left: 0.4em;
+  min-width: 1.3em;
+  padding: 0.05em 0.35em;
+  border-radius: 999px;
+  background: var(--stamp);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.student-main { max-width: var(--max-width); margin: 0 auto; padding: 1.75rem; }
+
+.student-welcome { margin-bottom: 1.5rem; }
+.student-welcome h1 { font-size: 1.5rem; margin-bottom: 0.15em; }
+.student-welcome p { color: var(--ink-soft); margin: 0; }
+
+/* Stat cards (own copy — not shared with admin_dashboard.css) */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.2rem;
+}
+
+.stat-card-label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); margin-bottom: 0.5em; }
+.stat-card-value { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; color: var(--ink); line-height: 1; }
+.stat-card-value.stat-warn { color: var(--stamp); }
+.stat-card-sub { font-size: 0.76rem; color: var(--ink-soft); margin-top: 0.4em; }
+
+.dash-columns {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .dash-columns { grid-template-columns: 1fr; }
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+}
+
+.panel h3 { font-size: 0.95rem; margin-bottom: 1rem; }
+
+/* Borrowed-books table */
+.borrowed-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.borrowed-table th {
+  text-align: left;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  padding: 0.5em 0.6em;
+  border-bottom: 1px solid var(--line);
+}
+.borrowed-table td { padding: 0.65em 0.6em; border-bottom: 1px solid var(--line); vertical-align: top; }
+.borrowed-table tr:last-child td { border-bottom: none; }
+
+.due-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.15em 0.5em;
+  border-radius: 4px;
+}
+.due-badge.ok { background: var(--success-bg); color: var(--success); }
+.due-badge.soon { background: #fbf3e3; color: var(--brass); }
+.due-badge.late { background: var(--stamp-bg); color: var(--stamp); }
+
+/* Announcements list */
+.announcement-item { padding: 0.8em 0; border-bottom: 1px solid var(--line); }
+.announcement-item:last-child { border-bottom: none; }
+.announcement-item h4 { font-size: 0.9rem; margin: 0 0 0.25em; }
+.announcement-item p { font-size: 0.84rem; color: var(--ink-soft); margin: 0; }
+.announcement-date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-soft); }

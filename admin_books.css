@@ -1,0 +1,187 @@
+/* ============================================================================
+   ADMIN_BOOKS.CSS — styles specific to admin_books.html
+   ============================================================================ */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.toolbar input[type="text"],
+.toolbar select {
+  padding: 0.55em 0.75em;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  font-size: 0.88rem;
+}
+
+.toolbar input[type="text"] { flex: 1; min-width: 200px; }
+.toolbar-spacer { flex: 1; }
+
+.data-table-wrap {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+
+.data-table th {
+  text-align: left;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  padding: 0.7em 0.8em;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.data-table td { padding: 0.7em 0.8em; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: rgba(169, 124, 52, 0.04); }
+
+.book-cover-mini {
+  width: 34px;
+  height: 46px;
+  border-radius: 3px;
+  background: var(--shelf);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.book-title-cell { display: flex; align-items: center; gap: 0.6em; }
+.book-title-main { font-weight: 600; }
+.book-title-sub { font-size: 0.78rem; color: var(--ink-soft); }
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.2em 0.55em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.status-badge.available { background: var(--success-bg); color: var(--success); }
+.status-badge.unavailable { background: var(--stamp-bg); color: var(--stamp); }
+
+.copy-count { font-family: var(--font-mono); font-size: 0.85rem; }
+.copy-count.zero { color: var(--stamp); }
+
+.row-actions { display: flex; gap: 0.4em; flex-wrap: wrap; }
+.row-actions button {
+  font-size: 0.78rem;
+  padding: 0.35em 0.6em;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  color: var(--ink);
+}
+.row-actions button:hover { border-color: var(--brass); }
+.row-actions button.danger { color: var(--stamp); }
+.row-actions button.danger:hover { border-color: var(--stamp); }
+
+/* Expandable copies row */
+.copies-row td {
+  background: var(--parchment);
+  padding: 1rem 1.25rem;
+}
+
+.copies-mini-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin-bottom: 0.9rem; }
+.copies-mini-table th {
+  text-align: left;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 0.4em 0.5em;
+  border-bottom: 1px solid var(--line);
+}
+.copies-mini-table td { padding: 0.4em 0.5em; border-bottom: 1px solid var(--line); }
+.copies-mini-table select { font-size: 0.8rem; padding: 0.2em; }
+
+.add-copy-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: end;
+}
+.add-copy-form .mini-field { display: flex; flex-direction: column; gap: 0.25em; }
+.add-copy-form .mini-field label { font-size: 0.68rem; text-transform: uppercase; color: var(--ink-soft); }
+.add-copy-form input, .add-copy-form select {
+  padding: 0.4em 0.5em;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 0.82rem;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 42, 34, 0.45);
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  overflow-y: auto;
+  z-index: 100;
+}
+.modal-backdrop.open { display: flex; }
+
+.modal-card {
+  background: var(--card);
+  border-radius: 8px;
+  max-width: 620px;
+  width: 100%;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+}
+
+.modal-card h2 { font-size: 1.15rem; margin-bottom: 1rem; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+.form-grid .field-full { grid-column: 1 / -1; }
+
+.author-checklist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  max-height: 130px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.6em;
+}
+.author-checklist label {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.83rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.modal-actions { display: flex; justify-content: flex-end; gap: 0.6em; margin-top: 1.4rem; }
+
+textarea.field-textarea {
+  width: 100%;
+  padding: 0.7em 0.8em;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+  min-height: 70px;
+}

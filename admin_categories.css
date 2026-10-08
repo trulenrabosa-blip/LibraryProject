@@ -1,0 +1,46 @@
+/* ============================================================================
+   ADMIN_CATEGORIES.CSS — styles specific to admin_categories.html
+   ============================================================================ */
+
+.toolbar { display: flex; gap: 0.75rem; align-items: center; margin-bottom: 1.25rem; }
+.toolbar input[type="text"] {
+  flex: 1;
+  max-width: 320px;
+  padding: 0.55em 0.75em;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+}
+.toolbar-spacer { flex: 1; }
+
+.data-table-wrap { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+.data-table th {
+  text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--ink-soft); padding: 0.7em 0.8em; border-bottom: 1px solid var(--line);
+}
+.data-table td { padding: 0.7em 0.8em; border-bottom: 1px solid var(--line); }
+.data-table tr:last-child td { border-bottom: none; }
+
+.row-actions { display: flex; gap: 0.4em; }
+.row-actions button {
+  font-size: 0.78rem; padding: 0.35em 0.6em; border-radius: 4px; border: 1px solid var(--line);
+  background: #fff; cursor: pointer; color: var(--ink);
+}
+.row-actions button:hover { border-color: var(--brass); }
+.row-actions button.danger { color: var(--stamp); }
+.row-actions button.danger:hover { border-color: var(--stamp); }
+
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(30, 42, 34, 0.45);
+  display: none; align-items: flex-start; justify-content: center;
+  padding: 2.5rem 1rem; overflow-y: auto; z-index: 100;
+}
+.modal-backdrop.open { display: flex; }
+.modal-card { background: var(--card); border-radius: 8px; max-width: 440px; width: 100%; padding: 1.75rem; box-shadow: var(--shadow-card); }
+.modal-card h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 0.6em; margin-top: 1.2rem; }
+textarea.field-textarea {
+  width: 100%; padding: 0.7em 0.8em; border: 1px solid var(--line); border-radius: var(--radius);
+  font-family: inherit; font-size: 0.9rem; resize: vertical; min-height: 70px;
+}

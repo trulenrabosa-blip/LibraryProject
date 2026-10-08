@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Riverside University Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="theme.css" />
+<style>
+  .splash {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    padding: 2rem;
+  }
+  .splash-mark { font-family: var(--font-display); font-size: 1.3rem; color: var(--shelf); }
+  .splash-fallback { display: none; max-width: 440px; }
+  .splash-fallback ol { text-align: left; color: var(--ink-soft); font-size: 0.9rem; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="splash" id="splash">
+  <div class="splash-mark">Riverside Library</div>
+  <div class="spinner spinner-dark" id="splash-spinner"></div>
+</div>
+
+<div class="splash splash-fallback" id="splash-fallback">
+  <div class="splash-mark">Riverside Library</div>
+  <h1 style="font-size:1.1rem;">This page didn't finish loading</h1>
+  <p style="color:var(--ink-soft);font-size:0.92rem;max-width:40ch;">
+    That usually means one of two things:
+  </p>
+  <ol>
+    <li>You opened this file directly (<code>file://...</code>) instead of through a local
+        server. Browsers block module scripts on <code>file://</code> pages — serve this
+        folder instead, e.g. <code>npx serve .</code> or <code>python -m http.server 8000</code>,
+        then open <code>http://localhost:&lt;port&gt;/index.html</code>.</li>
+    <li><code>supabase_client.js</code> still has placeholder credentials — open it and
+        replace <code>SUPABASE_URL</code> / <code>SUPABASE_ANON_KEY</code> with your
+        project's real values.</li>
+  </ol>
+  <p style="color:var(--ink-soft);font-size:0.85rem;">Check your browser console for the exact error.</p>
+  <a href="login.html" class="btn btn-secondary">Go to sign in</a>
+</div>
+
+<script>
+  // Safety net: if the module script below hasn't taken over within a few
+  // seconds, it most likely failed to even start — commonly because this
+  // file was opened as file:// instead of served over http://, which
+  // silently blocks module scripts in most browsers.
+  window.__bootTimer = setTimeout(function () {
+    document.getElementById("splash").style.display = "none";
+    document.getElementById("splash-fallback").style.display = "flex";
+  }, 3000);
+</script>
+
+<script type="module">
+  clearTimeout(window.__bootTimer); // the module is running — cancel the fallback timer
+
+  import("./auth_service.js")
+    .then(async ({ getSession, getCurrentProfile, dashboardPathForRole }) => {
+      const session = await getSession();
+      if (!session) {
+        window.location.replace("login.html");
+        return;
+      }
+      const profile = await getCurrentProfile();
+      window.location.replace(profile ? dashboardPathForRole(profile.role) : "login.html");
+    })
+    .catch((error) => {
+      console.error("Startup failed:", error);
+      document.getElementById("splash").style.display = "none";
+      document.getElementById("splash-fallback").style.display = "flex";
+    });
+</script>
+</body>
+</html>

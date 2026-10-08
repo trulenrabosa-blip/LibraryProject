@@ -1,0 +1,20 @@
+/* ============================================================================
+   STUDENT_PROFILE.CSS — styles specific to student_profile.html
+   ============================================================================ */
+
+.profile-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (max-width: 800px) {
+  .profile-columns { grid-template-columns: 1fr; }
+}
+
+.profile-readonly {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.1em;
+}
+.profile-readonly strong { color: var(--ink); font-weight: 600; }

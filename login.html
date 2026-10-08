@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sign In — Riverside University Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="theme.css" />
+<link rel="stylesheet" href="login.css" />
+</head>
+<body>
+<div class="auth-screen">
+  <div class="auth-card">
+    <span class="auth-stamp">Est. 1962</span>
+
+    <div class="auth-brand">
+      <div class="auth-brand-mark">RL</div>
+      <div>
+        <div class="auth-brand-name">Riverside Library</div>
+        <div class="auth-brand-sub">Catalog · Circulation · Reserves</div>
+      </div>
+    </div>
+
+    <h1 class="auth-title">Sign in</h1>
+    <p class="auth-subtitle">Access your dashboard, borrowed books, and holds.</p>
+
+    <div id="alert-box"></div>
+
+    <form id="login-form" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" required />
+      </div>
+
+      <div class="auth-links-row">
+        <span></span>
+        <a href="forgot_password.html">Forgot password?</a>
+      </div>
+
+      <button type="submit" id="submit-btn" class="btn btn-primary btn-block">Sign in</button>
+    </form>
+
+    <p class="auth-footer">
+      New here? <a href="register.html">Create a Student or Teacher account</a>
+    </p>
+  </div>
+</div>
+
+<script type="module" src="login.js"></script>
+</body>
+</html>

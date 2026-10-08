@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create Account — Riverside University Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="theme.css" />
+<link rel="stylesheet" href="register.css" />
+</head>
+<body>
+<div class="auth-screen">
+  <div class="auth-card">
+    <span class="auth-stamp">New Card</span>
+
+    <div class="auth-brand">
+      <div class="auth-brand-mark">RL</div>
+      <div>
+        <div class="auth-brand-name">Riverside Library</div>
+        <div class="auth-brand-sub">Catalog · Circulation · Reserves</div>
+      </div>
+    </div>
+
+    <h1 class="auth-title">Create your account</h1>
+    <p class="auth-subtitle">For students and teachers. Admin accounts are issued by library staff only.</p>
+
+    <div id="alert-box"></div>
+
+    <form id="register-form" novalidate>
+      <fieldset>
+        <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.5em;">
+          I am a
+        </label>
+        <div class="radio-row">
+          <label class="radio-card">
+            <input type="radio" name="role" value="Student" checked />
+            Student
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="role" value="Teacher" />
+            Teacher
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="full_name">Full name</label>
+        <input type="text" id="full_name" name="full_name" autocomplete="name" required />
+      </div>
+
+      <div class="field">
+        <label for="id_number" id="id_number_label">Student ID</label>
+        <input type="text" id="id_number" name="id_number" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required />
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" autocomplete="new-password" minlength="6" required />
+        <div class="field-hint">At least 6 characters.</div>
+      </div>
+
+      <div class="field">
+        <label for="confirm_password">Confirm password</label>
+        <input type="password" id="confirm_password" name="confirm_password" autocomplete="new-password" required />
+      </div>
+
+      <button type="submit" id="submit-btn" class="btn btn-primary btn-block">Create account</button>
+    </form>
+
+    <p class="auth-footer">
+      Already have an account? <a href="login.html">Sign in</a>
+    </p>
+  </div>
+</div>
+
+<script type="module" src="register.js"></script>
+</body>
+</html>
